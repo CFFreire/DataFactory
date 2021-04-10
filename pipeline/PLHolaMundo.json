@@ -10,7 +10,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "saludo",
-					"value": "1"
+					"value": "Hola Mundo"
 				}
 			}
 		],
