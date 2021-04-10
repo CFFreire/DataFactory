@@ -2,6 +2,23 @@
 	"name": "PLHolaMundo",
 	"properties": {
 		"description": "Pipeline Hola Mundo",
+		"activities": [
+			{
+				"name": "Establecer Variable",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "saludo",
+					"value": "1"
+				}
+			}
+		],
+		"variables": {
+			"saludo": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
