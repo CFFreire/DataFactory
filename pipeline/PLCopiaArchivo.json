@@ -1,0 +1,7 @@
+{
+	"name": "PLCopiaArchivo",
+	"properties": {
+		"description": "pipeline copia archivo",
+		"annotations": []
+	}
+}
