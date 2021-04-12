@@ -1,7 +1,0 @@
-{
-	"name": "ir-conexion-local",
-	"properties": {
-		"type": "SelfHosted",
-		"description": "Conexión integration runtime local"
-	}
-}
