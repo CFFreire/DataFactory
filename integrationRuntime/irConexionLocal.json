@@ -1,0 +1,7 @@
+{
+	"name": "irConexionLocal",
+	"properties": {
+		"type": "SelfHosted",
+		"description": "Conexion local integration services"
+	}
+}
