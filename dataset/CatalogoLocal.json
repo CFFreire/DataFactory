@@ -1,0 +1,20 @@
+{
+	"name": "CatalogoLocal",
+	"properties": {
+		"description": "Conexion a catalogo local",
+		"linkedServiceName": {
+			"referenceName": "SqlServer1",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Clase3"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Catalogo"
+		}
+	}
+}
