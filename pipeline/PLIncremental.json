@@ -52,7 +52,11 @@
 				"outputs": [
 					{
 						"referenceName": "CSV_41",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"directorio": "Factura/2017/01",
+							"nombreArchivo": "Factura.csv"
+						}
 					}
 				]
 			}
