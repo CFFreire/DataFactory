@@ -4,7 +4,7 @@
 		"description": "Integración Azure con databricks",
 		"activities": [
 			{
-				"name": "Notebook1",
+				"name": "Integracion Databricks",
 				"type": "DatabricksNotebook",
 				"dependsOn": [],
 				"policy": {
