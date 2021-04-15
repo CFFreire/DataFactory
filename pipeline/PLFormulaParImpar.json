@@ -1,0 +1,35 @@
+{
+	"name": "PLFormulaParImpar",
+	"properties": {
+		"description": "Determinar si un numero es par o impar",
+		"activities": [
+			{
+				"name": "Obtener Par Impar",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "resultado",
+					"value": {
+						"value": "@string(mod(pipeline().parameters.numero, 2))",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"numero": {
+				"type": "int"
+			}
+		},
+		"variables": {
+			"resultado": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Clase5 Asincronica"
+		},
+		"annotations": []
+	}
+}
