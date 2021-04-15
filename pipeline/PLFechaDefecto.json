@@ -1,0 +1,57 @@
+{
+	"name": "PLFechaDefecto",
+	"properties": {
+		"activities": [
+			{
+				"name": "fecha Corte",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "fechaCorteVar",
+					"value": {
+						"value": "@coalesce(pipeline().parameters.fechaCorte, utcnow())",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Fecha Corte Formato",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "fecha Corte",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "fechaCorteFormato",
+					"value": {
+						"value": "@formatDateTime(variables('fechaCorteVar'), 'dd/mm/yyyy')",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"fechaCorte": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"fechaCorteVar": {
+				"type": "String"
+			},
+			"fechaCorteFormato": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Clase5 Asincronica"
+		},
+		"annotations": []
+	}
+}
