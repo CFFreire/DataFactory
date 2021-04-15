@@ -1,0 +1,20 @@
+{
+	"name": "dataLakeJson",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "consulta.json",
+				"folderPath": "Resultado",
+				"fileSystem": "aci-cffreire"
+			}
+		},
+		"schema": {}
+	}
+}
