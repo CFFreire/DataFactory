@@ -90,7 +90,7 @@
 				"typeProperties": {
 					"variableName": "fechaFinMes",
 					"value": {
-						"value": "@addToTime(variables('fechaInicioMes'), -1, 'day')",
+						"value": "@addToTime(variables('fechaSumaPeriodo'), -1, 'day')",
 						"type": "Expression"
 					}
 				}
