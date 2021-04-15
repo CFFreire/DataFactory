@@ -1,0 +1,15 @@
+{
+	"name": "datasetRest",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_restService",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Clase5 Asincrona"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	}
+}
