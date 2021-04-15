@@ -1,0 +1,99 @@
+{
+	"name": "PLSwitch",
+	"properties": {
+		"description": "Uso de Switch",
+		"activities": [
+			{
+				"name": "Operaciones",
+				"type": "Switch",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"on": {
+						"value": "@pipeline().parameters.caso",
+						"type": "Expression"
+					},
+					"cases": [
+						{
+							"value": "A",
+							"activities": [
+								{
+									"name": "Suma",
+									"type": "SetVariable",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"variableName": "resultado",
+										"value": {
+											"value": "@string(add(pipeline().parameters.numero1, pipeline().parameters.numero2))",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						},
+						{
+							"value": "B",
+							"activities": [
+								{
+									"name": "Multiplicacion",
+									"type": "SetVariable",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"variableName": "resultado",
+										"value": {
+											"value": "@string(mul(pipeline().parameters.numero1, pipeline().parameters.numero2))",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						},
+						{
+							"value": "C",
+							"activities": [
+								{
+									"name": "Division",
+									"type": "SetVariable",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"variableName": "resultado",
+										"value": {
+											"value": "@string(div(pipeline().parameters.numero1, pipeline().parameters.numero2))",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"caso": {
+				"type": "string",
+				"defaultValue": "X"
+			},
+			"numero1": {
+				"type": "int",
+				"defaultValue": 10
+			},
+			"numero2": {
+				"type": "int",
+				"defaultValue": 5
+			}
+		},
+		"variables": {
+			"resultado": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Clase5 Asincronica"
+		},
+		"annotations": []
+	}
+}
