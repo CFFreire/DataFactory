@@ -11,7 +11,7 @@
 				"typeProperties": {
 					"variableName": "resultado",
 					"value": {
-						"value": "@string(mod(pipeline().parameters.numero, 2))",
+						"value": "@if( equals( mod(pipeline().parameters.numero,2),0)\n, concat(string(pipeline().parameters.numero), ' Es Par')\n, concat(string(pipeline().parameters.numero),' Es impar')\n)",
 						"type": "Expression"
 					}
 				}
