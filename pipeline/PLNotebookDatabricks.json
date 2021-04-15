@@ -1,0 +1,32 @@
+{
+	"name": "PLNotebookDatabricks",
+	"properties": {
+		"description": "Integración Azure con databricks",
+		"activities": [
+			{
+				"name": "Notebook1",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Shared/TRAINING_DATAFACTORY/PY_HolaDatafactory"
+				},
+				"linkedServiceName": {
+					"referenceName": "ls_databricks",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "Clase5 Asincronica"
+		},
+		"annotations": []
+	}
+}
