@@ -1,0 +1,54 @@
+{
+	"name": "PLWebService",
+	"properties": {
+		"description": "Consumir servicio rest",
+		"activities": [
+			{
+				"name": "Consultar Hora Universal",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "http://worldclockapi.com/api/json/utc/now",
+					"method": "GET"
+				}
+			},
+			{
+				"name": "Obtenner Variable",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Consultar Hora Universal",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "dayOfTheWeek",
+					"value": {
+						"value": "@activity('Consultar Hora Universal').output.dayOfTheWeek",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"dayOfTheWeek": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Clase5 Asincronica"
+		},
+		"annotations": []
+	}
+}
