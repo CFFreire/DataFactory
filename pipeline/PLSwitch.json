@@ -68,6 +68,21 @@
 								}
 							]
 						}
+					],
+					"defaultActivities": [
+						{
+							"name": "Sin valor",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "resultado",
+								"value": {
+									"value": "No existe valor",
+									"type": "Expression"
+								}
+							}
+						}
 					]
 				}
 			}
