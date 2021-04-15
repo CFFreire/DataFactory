@@ -37,7 +37,7 @@
 							"typeProperties": {
 								"variableName": "resultado",
 								"value": {
-									"value": "El numero @{pipeline().parameters.numero} es Par",
+									"value": "El número @{pipeline().parameters.numero} es Par",
 									"type": "Expression"
 								}
 							}
