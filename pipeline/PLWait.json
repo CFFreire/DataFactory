@@ -1,0 +1,66 @@
+{
+	"name": "PLWait",
+	"properties": {
+		"description": "Uso de la actividad Wait",
+		"activities": [
+			{
+				"name": "Esperar",
+				"type": "Wait",
+				"dependsOn": [
+					{
+						"activity": "Fecha de inicio",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": 20
+				}
+			},
+			{
+				"name": "Fecha de inicio",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "mensaje",
+					"value": {
+						"value": "@utcnow()",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Fecha de fin",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Esperar",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "mensaje",
+					"value": {
+						"value": "@utcnow()",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"mensaje": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Clase5 Asincronica"
+		},
+		"annotations": []
+	}
+}
