@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-training-cffreire"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"value": ""
+		},
+		"FileServer1_password": {
+			"value": ""
+		},
+		"SqlServer1_connectionString": {
+			"value": ""
+		},
+		"ls_databricks_accessToken": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://dlsfuturoinfonoprod.dfs.core.windows.net"
+		},
+		"FileServer1_properties_typeProperties_host": {
+			"value": "C:\\D\\DataFactory"
+		},
+		"FileServer1_properties_typeProperties_userId": {
+			"value": "BGR1\\Usuario"
+		},
+		"ls_restService_properties_typeProperties_url": {
+			"value": "http://worldclockapi.com/api/json/utc/now"
+		},
+		"SCCargaInicial_properties_PLCargaRangoFechasTrigger_parameters_fechaInicial": {
+			"value": "2021-01-01"
+		},
+		"SCCargaInicial_properties_PLCargaRangoFechasTrigger_parameters_fechaFinal": {
+			"value": "2021-05-01"
+		}
+	}
+}
