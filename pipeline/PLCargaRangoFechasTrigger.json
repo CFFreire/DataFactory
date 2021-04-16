@@ -1,0 +1,94 @@
+{
+	"name": "PLCargaRangoFechasTrigger",
+	"properties": {
+		"description": "Carga Rango Fechas",
+		"activities": [
+			{
+				"name": "Rango Fechas",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "DECLARE @MinDate DATE = '@{pipeline().parameters.fechaInicial}',\n        @MaxDate DATE = '@{pipeline().parameters.fechaFinal}';\n\nSELECT CONVERT(varchar,fechaCorte,23) AS fechaCorte, MONTH(fechaCorte) as mesCorte, YEAR(fechaCorte) as anioCorte\nFROM\n(\n\tSELECT  \n\tTOP (DATEDIFF(MONTH, @MinDate, @MaxDate) + 1)\n\tfechaCorte = EOMONTH(DATEADD(MONTH, ROW_NUMBER() OVER(ORDER BY a.object_id) - 1, @MinDate))\n\tFROM    sys.all_objects a \n\tCROSS JOIN sys.all_objects b\n)fechas\n\nORDER BY fechaCorte;\n",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "AzureSqlTable2",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Rango Fechas",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@array(activity('Rango Fechas').output.value)",
+						"type": "Expression"
+					},
+					"isSequential": false,
+					"activities": [
+						{
+							"name": "PLIncremental",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "PLIncremental",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"anio": {
+										"value": "@item().anioCorte",
+										"type": "Expression"
+									},
+									"mes": {
+										"value": "@item().mesCorte",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"fechaInicial": {
+				"type": "string"
+			},
+			"fechaFinal": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Clase6"
+		},
+		"annotations": []
+	}
+}
