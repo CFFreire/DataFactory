@@ -1,0 +1,66 @@
+{
+	"name": "PLControlError",
+	"properties": {
+		"activities": [
+			{
+				"name": "Paso 1",
+				"description": "Paso 1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "tester",
+					"value": {
+						"value": "@add(1, 2)",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Paso 2",
+				"description": "Paso 2",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Paso 1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "tester",
+					"value": "Paso 2"
+				}
+			},
+			{
+				"name": "Paso Error",
+				"description": "Paso Error",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Paso 1",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "tester",
+					"value": "Paso Error"
+				}
+			}
+		],
+		"variables": {
+			"tester": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Clase6"
+		},
+		"annotations": []
+	}
+}
