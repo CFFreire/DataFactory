@@ -1,0 +1,20 @@
+{
+	"name": "dts_catIngesta",
+	"properties": {
+		"description": "Cat Ingesta",
+		"linkedServiceName": {
+			"referenceName": "ls_azuresql",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TallerPractico"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "par",
+			"table": "CatIngesta"
+		}
+	}
+}
