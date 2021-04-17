@@ -1,0 +1,36 @@
+{
+	"name": "Taller",
+	"properties": {
+		"description": "Trigger Taller",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "PL_TALLER_PRACTICO",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"fechaCorte": "2017-01-02"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2021-04-16T15:36:00",
+				"timeZone": "SA Pacific Standard Time",
+				"schedule": {
+					"minutes": [
+						40
+					],
+					"hours": [
+						10
+					]
+				}
+			}
+		}
+	}
+}
