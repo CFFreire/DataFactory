@@ -73,6 +73,15 @@
 												},
 												"userProperties": [],
 												"typeProperties": {
+													"source": {
+														"type": "AzureSqlSource",
+														"sqlReaderQuery": {
+															"value": "@item.consulta",
+															"type": "Expression"
+														},
+														"queryTimeout": "02:00:00",
+														"partitionOption": "None"
+													},
 													"sink": {
 														"type": "DelimitedTextSink",
 														"storeSettings": {
@@ -84,12 +93,36 @@
 															"fileExtension": ".txt"
 														}
 													},
-													"enableStaging": false
+													"enableStaging": false,
+													"translator": {
+														"type": "TabularTranslator",
+														"typeConversion": true,
+														"typeConversionSettings": {
+															"allowDataTruncation": true,
+															"treatBooleanAsNumber": false
+														}
+													}
 												},
+												"inputs": [
+													{
+														"referenceName": "dts_catIngesta",
+														"type": "DatasetReference"
+													}
+												],
 												"outputs": [
 													{
-														"referenceName": "CSV_41",
-														"type": "DatasetReference"
+														"referenceName": "csv_escribir",
+														"type": "DatasetReference",
+														"parameters": {
+															"directorio": {
+																"value": "/Taller/@{item().esquema}/@{item().tabla}",
+																"type": "Expression"
+															},
+															"nombreArchivo": {
+																"value": "@{item().tabla}.csv",
+																"type": "Expression"
+															}
+														}
 													}
 												]
 											}
