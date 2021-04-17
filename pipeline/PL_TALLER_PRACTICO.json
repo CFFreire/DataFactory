@@ -147,7 +147,7 @@
 													"source": {
 														"type": "AzureSqlSource",
 														"sqlReaderQuery": {
-															"value": "@item().consulta",
+															"value": "@replace(item().consulta, '{{fechaCorte}}', '@{pipeline().parameters.fechaCorte}')",
 															"type": "Expression"
 														},
 														"queryTimeout": "02:00:00",
@@ -190,7 +190,7 @@
 																"type": "Expression"
 															},
 															"nombreArchivo": {
-																"value": "@{item().tabla}.csv",
+																"value": "@{item().tabla}_@{formatDateTime(pipeline().parameters.fechaCorte, 'ddMMyyyy')}.csv",
 																"type": "Expression"
 															}
 														}
@@ -218,6 +218,11 @@
 				}
 			}
 		],
+		"parameters": {
+			"fechaCorte": {
+				"type": "string"
+			}
+		},
 		"variables": {
 			"mensaje": {
 				"type": "String"
