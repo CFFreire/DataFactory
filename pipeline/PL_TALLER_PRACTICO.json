@@ -147,7 +147,7 @@
 													"source": {
 														"type": "AzureSqlSource",
 														"sqlReaderQuery": {
-															"value": "@replace(item().consulta, '{{fechaCorte}}', '@{pipeline().parameters.fechaCorte}')",
+															"value": "@replace(item().consulta, '{{fechaCorte}}', pipeline().parameters.fechaCorte)",
 															"type": "Expression"
 														},
 														"queryTimeout": "02:00:00",
