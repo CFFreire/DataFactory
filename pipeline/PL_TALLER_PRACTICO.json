@@ -2,6 +2,66 @@
 	"name": "PL_TALLER_PRACTICO",
 	"properties": {
 		"description": "Taller Práctico",
+		"activities": [
+			{
+				"name": "Obtener Consultas",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "dts_catIngesta",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "Procesar consultas",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Obtener Consultas",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Obtener Consultas').output.value",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Validar Consulta",
+							"type": "IfCondition",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@equals(item().tipoTabla, 'stock')",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			}
+		],
 		"folder": {
 			"name": "TallerPractico"
 		},
