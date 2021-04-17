@@ -1,0 +1,10 @@
+{
+	"name": "PL_TALLER_PRACTICO",
+	"properties": {
+		"description": "Taller Práctico",
+		"folder": {
+			"name": "TallerPractico"
+		},
+		"annotations": []
+	}
+}
