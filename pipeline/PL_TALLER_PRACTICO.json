@@ -47,7 +47,7 @@
 					},
 					"activities": [
 						{
-							"name": "Validar Consulta",
+							"name": "Procesar consulta",
 							"type": "Switch",
 							"dependsOn": [],
 							"userProperties": [],
@@ -129,7 +129,75 @@
 										]
 									},
 									{
-										"value": "history"
+										"value": "history",
+										"activities": [
+											{
+												"name": "History",
+												"type": "Copy",
+												"dependsOn": [],
+												"policy": {
+													"timeout": "7.00:00:00",
+													"retry": 0,
+													"retryIntervalInSeconds": 30,
+													"secureOutput": false,
+													"secureInput": false
+												},
+												"userProperties": [],
+												"typeProperties": {
+													"source": {
+														"type": "AzureSqlSource",
+														"sqlReaderQuery": {
+															"value": "@item.consulta",
+															"type": "Expression"
+														},
+														"queryTimeout": "02:00:00",
+														"partitionOption": "None"
+													},
+													"sink": {
+														"type": "DelimitedTextSink",
+														"storeSettings": {
+															"type": "AzureBlobFSWriteSettings"
+														},
+														"formatSettings": {
+															"type": "DelimitedTextWriteSettings",
+															"quoteAllText": true,
+															"fileExtension": ".txt"
+														}
+													},
+													"enableStaging": false,
+													"translator": {
+														"type": "TabularTranslator",
+														"typeConversion": true,
+														"typeConversionSettings": {
+															"allowDataTruncation": true,
+															"treatBooleanAsNumber": false
+														}
+													}
+												},
+												"inputs": [
+													{
+														"referenceName": "dts_catIngesta",
+														"type": "DatasetReference"
+													}
+												],
+												"outputs": [
+													{
+														"referenceName": "csv_escribir",
+														"type": "DatasetReference",
+														"parameters": {
+															"directorio": {
+																"value": "/Taller/@{item().esquema}/@{item().tabla}",
+																"type": "Expression"
+															},
+															"nombreArchivo": {
+																"value": "@{item().tabla}.csv",
+																"type": "Expression"
+															}
+														}
+													}
+												]
+											}
+										]
 									}
 								]
 							}
