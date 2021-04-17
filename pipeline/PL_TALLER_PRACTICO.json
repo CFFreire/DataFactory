@@ -88,7 +88,7 @@
 												},
 												"outputs": [
 													{
-														"referenceName": "csv_escribir",
+														"referenceName": "CSV_41",
 														"type": "DatasetReference"
 													}
 												]
