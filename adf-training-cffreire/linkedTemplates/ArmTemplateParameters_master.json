@@ -17,7 +17,13 @@
 		"SqlServer1_connectionString": {
 			"value": ""
 		},
+		"ls_azuresql_connectionString": {
+			"value": ""
+		},
 		"ls_databricks_accessToken": {
+			"value": ""
+		},
+		"ls_datalake_accountKey": {
 			"value": ""
 		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
@@ -29,6 +35,9 @@
 		"FileServer1_properties_typeProperties_userId": {
 			"value": "BGR1\\Usuario"
 		},
+		"ls_datalake_properties_typeProperties_url": {
+			"value": "https://dlsfuturoinfonoprod.dfs.core.windows.net"
+		},
 		"ls_restService_properties_typeProperties_url": {
 			"value": "http://worldclockapi.com/api/json/utc/now"
 		},
@@ -37,6 +46,9 @@
 		},
 		"SCCargaInicial_properties_PLCargaRangoFechasTrigger_parameters_fechaFinal": {
 			"value": "2021-05-01"
+		},
+		"Taller_properties_PL_TALLER_PRACTICO_parameters_fechaCorte": {
+			"value": "2017-01-02"
 		},
 		"containerUri": {
 			"value": ""

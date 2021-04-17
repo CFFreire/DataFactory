@@ -23,9 +23,17 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'SqlServer1'"
 		},
+		"ls_azuresql_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_azuresql'"
+		},
 		"ls_databricks_accessToken": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accessToken' of 'ls_databricks'"
+		},
+		"ls_datalake_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_datalake'"
 		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
@@ -39,6 +47,10 @@
 			"type": "string",
 			"defaultValue": "BGR1\\Usuario"
 		},
+		"ls_datalake_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://dlsfuturoinfonoprod.dfs.core.windows.net"
+		},
 		"ls_restService_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "http://worldclockapi.com/api/json/utc/now"
@@ -50,6 +62,10 @@
 		"SCCargaInicial_properties_PLCargaRangoFechasTrigger_parameters_fechaFinal": {
 			"type": "string",
 			"defaultValue": "2021-05-01"
+		},
+		"Taller_properties_PL_TALLER_PRACTICO_parameters_fechaCorte": {
+			"type": "string",
+			"defaultValue": "2017-01-02"
 		},
 		"containerUri": {
 			"type": "string",
@@ -84,11 +100,20 @@
 					"AzureSqlDatabase1_connectionString": {
 						"value": "[parameters('AzureSqlDatabase1_connectionString')]"
 					},
+					"ls_azuresql_connectionString": {
+						"value": "[parameters('ls_azuresql_connectionString')]"
+					},
 					"ls_databricks_accessToken": {
 						"value": "[parameters('ls_databricks_accessToken')]"
 					},
+					"ls_datalake_accountKey": {
+						"value": "[parameters('ls_datalake_accountKey')]"
+					},
 					"AzureDataLakeStorage1_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"ls_datalake_properties_typeProperties_url": {
+						"value": "[parameters('ls_datalake_properties_typeProperties_url')]"
 					},
 					"ls_restService_properties_typeProperties_url": {
 						"value": "[parameters('ls_restService_properties_typeProperties_url')]"
@@ -122,6 +147,29 @@
 					},
 					"FileServer1_properties_typeProperties_userId": {
 						"value": "[parameters('FileServer1_properties_typeProperties_userId')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adf-training-cffreire_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "adf-training-cffreire_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"Taller_properties_PL_TALLER_PRACTICO_parameters_fechaCorte": {
+						"value": "[parameters('Taller_properties_PL_TALLER_PRACTICO_parameters_fechaCorte')]"
 					},
 					"SCCargaInicial_properties_PLCargaRangoFechasTrigger_parameters_fechaInicial": {
 						"value": "[parameters('SCCargaInicial_properties_PLCargaRangoFechasTrigger_parameters_fechaInicial')]"
@@ -132,7 +180,7 @@
 				}
 			},
 			"dependsOn": [
-				"[resourceId('Microsoft.Resources/deployments', 'adf-training-cffreire_ArmTemplate_0')]"
+				"[resourceId('Microsoft.Resources/deployments', 'adf-training-cffreire_ArmTemplate_1')]"
 			]
 		}
 	]
