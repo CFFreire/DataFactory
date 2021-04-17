@@ -2572,7 +2572,7 @@
 			"properties": {
 				"description": "Trigger Taller",
 				"annotations": [],
-				"runtimeState": "Started",
+				"runtimeState": "Stopped",
 				"pipelines": [
 					{
 						"pipelineReference": {
