@@ -199,6 +199,18 @@
 											}
 										]
 									}
+								],
+								"defaultActivities": [
+									{
+										"name": "Default",
+										"type": "SetVariable",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"variableName": "mensaje",
+											"value": "No existe flujo"
+										}
+									}
 								]
 							}
 						}
@@ -206,6 +218,11 @@
 				}
 			}
 		],
+		"variables": {
+			"mensaje": {
+				"type": "String"
+			}
+		},
 		"folder": {
 			"name": "TallerPractico"
 		},
