@@ -11,10 +11,6 @@
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
-		"schema": [],
-		"typeProperties": {
-			"schema": "par",
-			"table": "CatIngesta"
-		}
+		"schema": []
 	}
 }
